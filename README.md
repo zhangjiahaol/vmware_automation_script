@@ -1,5 +1,5 @@
 # vmware automation script
-
+author:jiahao
 ## execute command example
 
 ## deploy VM
