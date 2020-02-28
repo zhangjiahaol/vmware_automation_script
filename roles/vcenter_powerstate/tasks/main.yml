@@ -1,0 +1,20 @@
+---
+- name: VMWare change the powerstate of hostgroup VMs
+  hosts: localhost
+  gather_facts: no
+
+## The available parameters are: powered-off/powered-on/shutdown-guest
+## ansible-playbook vcenter_powerstate.yml -e vcenter_target_state=powered-off
+
+  tasks:
+  - name: change state to {{ vcenter_target_state }}
+    vmware_guest_powerstate:
+      hostname: "192.168.1.250"
+      username: "administrator@vsphere.local"
+      password: "SHqz8866."
+      validate_certs: no
+      folder: "/Datacenter/vm/"
+      name: "centos7_192.168.1.67"
+      state: "{{ vcenter_target_state }}"
+    delegate_to: localhost 
+...

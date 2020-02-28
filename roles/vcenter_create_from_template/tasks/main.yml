@@ -1,0 +1,41 @@
+---
+- name:  Clone a virtual machine from Linux template and customize
+  vmware_guest:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: no
+    datacenter: "{{ datacenter }}"
+    state: poweredon
+    esxi_hostname: "{{ esxi_hostname }}"
+    folder: /Datacenter/vm
+    annotation: "{{ annotation }}"
+    name: "{{ vm_name }}"
+    hardware:
+      num_cpus: '{{ num_cpus }}'
+      num_cpu_cores_per_socket: '{{ num_cpu_cores_per_socket }}'
+      memory_mb: '{{ memory_mb }}'
+    disk:
+    - size_gb: '{{ disk_size_gb }}'
+      type: '{{ disk_type }}'
+      datastore: '{{ disk_datastore }}'
+    networks:
+    - name: '{{ networks_name }}'
+      start_connected: True
+      type: static
+      ip: '{{ ip }}'
+      netmask: '{{ netmask }}'
+      gateway: '{{ gateway }}'
+      dns_servers:
+      - '{{ dns1 }}'
+      - '{{ dns2 }}'
+      allow_guest_control: True
+    customization:
+      hostname: '{{ hostname }}'
+      dns_servers:
+        - '{{ dns1 }}'
+        - '{{ dns2 }}'
+    template: "{{ template }}"
+    wait_for_ip_address: yes
+  delegate_to: localhost
+...

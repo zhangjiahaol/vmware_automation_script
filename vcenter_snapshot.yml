@@ -1,0 +1,14 @@
+---
+- hosts: all
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - vars_common.yml
+  
+# execute example:
+# The available parameters are: present/absent/revert/remove_all
+# ansible-playbook vcenter_snapshot.yml -e '{"vcenter_hostname":"192.168.1.250","vcenter_username":"administrator@vsphere.local","vcenter_password":"SHqz8866.","vm_name":"centos7_192.168.1.67","datacenter":"Datacenter","state":"present","snapshot_name":"2020_0228_0912","description":"ansible automation create."}'
+
+  roles:
+    - vcenter_snapshot

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - vars_common.yml
+
+# execute example:
+# The available parameters are: powered-off/powered-on/shutdown-guest
+# ansible-playbook vcenter_powerstate.yml -e '{"vcenter_hostname":"192.168.1.250","vcenter_username":"administrator@vsphere.local","vcenter_password":"SHqz8866.","vm_name":"centos7_192.168.1.67","state":"powered-off"}'
+
+
+  roles:
+    - vcenter_powerstate

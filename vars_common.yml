@@ -1,0 +1,5 @@
+# Infrastructure
+# - Defines the vCenter / vSphere environment
+hostname: "192.168.1.250"
+username: "administrator@vsphere.local"
+password: "SHqz8866."
